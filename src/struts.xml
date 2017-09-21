@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="utf-8" />
+    <package name="login" namespace="/" extends="json-default">
+
+        <action name="loginAction" class="userAction" method="login">
+        	<result name="success" type="json">
+        	<param name="root">flag</param>
+        	</result>
+        </action>
+        
+        <action name="userNameExist" class="userAction" method="userNameExist">
+        	<result name="success" type="json">
+        	<param name="root">flag2</param>
+        	</result>
+        </action>
+        
+        <action name="register" class="userAction" method="register">
+        	<result name="success" type="json">
+        	<param name="root">flag3</param>
+        	</result>
+        </action>
+        	        
+    </package>
+    
+    <package name="register" namespace="/" extends="struts-default">
+    
+    		 <action name="zhuceJsp" class="userAction" method="registerInfo">
+        	 		 <result name="success">jspPage/zhuce.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	 </action>
+        	 
+	     	 <action name="quanxian" class="quanXianAction" method="quanXianInfo">
+	        		 <result name="success">leftPages/accordition.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+	         </action>
+        	
+    </package>
+    
+    <package name="tianbao" namespace="/" extends="struts-default">
+    
+    		 <action name="tianbao" class="tianBaoAction">
+        	 		 <result name="success">/jspPage/underMain/tianbao.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	 </action>
+        	
+    </package>
+        
+    <package name="tianbaoJson" namespace="/" extends="json-default"> 
+    
+    	<!-- 接收一级学科代码并把二级学科内容发送回去 -->
+    	<action name="subjectCode2" class="tianBaoAction" method="forSubjects2">
+        	<result name="success" type="json">
+        	<param name="root">subjects2</param>
+        	</result>
+        </action> 
+        
+        <!-- 接收二级学科代码并把三级学科内容发送回去 -->
+    	<action name="subjectCode3" class="tianBaoAction" method="forSubjects3">
+        	<result name="success" type="json">
+        	<param name="root">subjects3</param>
+        	</result>
+        </action>   
+        
+        <!-- 接收一级行业代码并把二级行业内容发送回去 -->
+    	<action name="industryCode2" class="tianBaoAction" method="forIndustries2">
+        	<result name="success" type="json">
+        	<param name="root">industries2</param>
+        	</result>
+        </action> 
+        
+        <!-- 接收二级行业代码并把三级行业内容发送回去 -->
+    	<action name="industryCode3" class="tianBaoAction" method="forIndustries3">
+        	<result name="success" type="json">
+        	<param name="root">industries3</param>
+        	</result>
+        </action> 
+        
+         <!-- 接收用户填报的需求内容并把提交是否成功发送回去 -->
+    	<action name="commitXuQiuForm" class="tianBaoAction" method="commitXuQiuForm">
+        	<result name="success" type="json">
+        	<param name="root">commitResult</param>
+        	</result>
+        </action> 
+       <!-- 删除需求 -->
+       <action name="deleteXuqiu" class="xuQiuGuanLiAction" method="deleteXuqiu">
+        	<result name="success" type="json">
+        	<param name="root">state</param>
+        	</result>
+        </action> 
+        
+        <!-- 处理客户端发来的审核结果 -->
+       <action name="shenHe" class="shenHeAction" method="shenHeResult">
+        	<result name="success" type="json">
+        	<param name="root">result</param>
+        	</result>
+        </action> 
+        
+       <!-- 返回统计图所需数据 -->
+       <action name="tongjitudata" class="tongJiChaXun" method="tongJiTuData">
+        	<result name="success" type="json">
+        	<param name="root">namecount</param>
+        	</result>
+        </action> 
+        
+    </package>
+    
+    <package name="xuqiuguanli" namespace="/" extends="struts-default">
+    		 <!-- 返回某用户的所有需求 -->
+    		 <action name="xuqiuguanli" class="xuQiuGuanLiAction">
+        	 		 <result name="success">/jspPage/underMain/xuqiuguanli.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	 </action>
+        	 
+        	  <!-- 查看需求 -->
+       		<action name="lookMyXuqiuJsp" class="xuQiuGuanLiAction" method="lookMyXuqiu">
+        			 <result name="success">/jspPage/underMain/lookMyXuqiu.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	</action>
+        	
+        	<!-- 编辑我的需求 -->
+       		<action name="editMyXuqiuJsp" class="xuQiuGuanLiAction" method="lookMyXuqiu">
+        			 <result name="success">/jspPage/underMain/editMyXuqiu.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	</action>
+        	
+        	<!-- 等待审核的需求列表(形式审核和部门审核) -->
+       		<action name="shenhelist" class="shenHeAction" method="lookShenHe">
+        			 <result name="success">/jspPage/underMain/shenhelist.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	</action>
+        	
+        	<!-- 返回进行形式审核的需求  -->
+       		<action name="xingshishenheJsp" class="xuQiuGuanLiAction" method="lookMyXuqiu">
+        			 <result name="success">/jspPage/underMain/shenhe.jsp</result>
+        	 		 <interceptor-ref name="defaultStack"></interceptor-ref>
+        	</action>
+        	
+    </package>
+    
+
+</struts>    

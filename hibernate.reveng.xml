@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<table name="user" catalog="db_hebeixuqiu"
+		class="com.liying.model.User">
+	</table>
+	<table name="guikoubumen" catalog="db_hebeixuqiu"
+		class="com.liying.model.Guikoubumen">
+	</table>
+	<table name="class" catalog="db_banjiguanli"
+		class="com.liying.model.Class">
+	</table>
+	<table name="userquanxian" catalog="db_hebeixuqiu"
+		class="com.liying.model.QuanXian">
+	</table>
+	<table name="area" catalog="db_hebeixuqiu"
+		class="com.liying.model.Area">
+	</table>
+	<table name="subject" catalog="db_hebeixuqiu"
+		class="com.liying.model.Subject">
+	</table>
+	<table name="industry" catalog="db_hebeixuqiu"
+		class="com.liying.model.Industry">
+	</table>
+	<table name="shenhebumen" catalog="db_hebeixuqiu"
+		class="com.liying.model.ShenHeBuMen">
+	</table>
+	<table name="xuqiu" catalog="db_hebeixuqiu" class="com.liying.model.XuQiu"></table>
+</hibernate-reverse-engineering>
